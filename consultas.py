@@ -24,3 +24,20 @@ def editar_un_contacto(nombreContacto, datosContacto):
                  {'direccion': datosContacto['direccion']}})
     return str(contactoModificado.modified_count)
 
+#forma 1 de eliminar 
+def eliminar_un_contacto(idContacto):
+
+    resultado = coleccionDatos.delete_one(
+        {
+        '_id': ObjectId(idContacto)
+        })
+    return resultado.deleted_count
+
+#forma 2 de eliminar 
+def eliminar_un_contacto_secundario(contacto):
+
+    resultado = coleccionDatos.delete_one(
+        {
+        'nombre': contacto
+        })
+    return resultado.deleted_count
