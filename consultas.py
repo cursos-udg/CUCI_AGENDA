@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from pymongo.objectid import ObjectId
 
 cliente = MongoClient('localhost', 27017)
 dataBase = cliente['CUCIENEGA']
@@ -13,11 +14,16 @@ def obtener_un_contacto(elContacto):
     resultadoConsulta = coleccionDatos.find_one({'nombre': elContacto})
     return resultadoConsulta
 
- def insertar_un_contacto(datosContacto):
+def insertar_un_contacto(datosContacto):
     idContactoInsertado = coleccionDatos.insert_one(datosContacto)
     return idContactoInsertado  
 
-
+def editar_un_contacto(nombreContacto, datosContacto):
+    contactoModificado = coleccionDatos.update_one({'nombre': nombreContacto}, 
+        {'$set': {'correo': datosContacto['correo'],
+        'telefono': datosContacto['telefono'],
+        'direccion': datosContacto['direccion']}})
+    return str(contactoModificado.modified_count)
 
 #forma 1 de eliminar 
 def eliminar_un_contacto(idContacto):
@@ -38,9 +44,3 @@ def eliminar_un_contacto_secundario(contacto):
     return resultado.deleted_count
 
     
-    def editar_un_contacto(nombreContacto, datosContacto):
-    contactoModificado = coleccionDatos.update_one({'nombre': nombreContacto}, 
-        {'$set': {'correo': datosContacto['correo']},
-                 {'telefono': datosContacto['telefono']},
-                 {'direccion': datosContacto['direccion']}})
-    return str(contactoModificado.modified_count)
