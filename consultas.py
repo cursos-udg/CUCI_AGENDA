@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from pymongo.objectid import ObjectId
+#from pymongo.objectid import ObjectId
 
 cliente = MongoClient('localhost', 27017)
 dataBase = cliente['CUCIENEGA']
@@ -26,14 +26,14 @@ def editar_un_contacto(nombreContacto, datosContacto):
     return str(contactoModificado.modified_count)
 
 #forma 1 de eliminar 
+"""
 def eliminar_un_contacto(idContacto):
-
     resultado = coleccionDatos.delete_one(
         {
         '_id': ObjectId(idContacto)
         })
-    return resultado.deleted_count
-
+    return resultado.deleted_count 
+"""
 #forma 2 de eliminar 
 def eliminar_un_contacto_secundario(contacto):
 
