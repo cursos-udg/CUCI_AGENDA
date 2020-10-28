@@ -2,22 +2,23 @@
 {% block contenido %}
     {% if contacto  %}
     <div class="content p-3">
-        <form class="" action="/contacto" method="put">
+        <form class="" action="#" method="post">
+            <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" value="{{contacto.nombre}}" disabled class="form-control" id="nombre">
+                <input type="text" value="{{contacto.nombre}}" disabled class="form-control" name="nombre">
             </div>
             <div class="form-group">
                 <label for="empresa">Empresa</label>
-                <input type="text" value="{{contacto.empresa}}" class="form-control" id="empresa">
+                <input type="text" value="{{contacto.empresa}}" class="form-control" name="empresa">
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="tel" value="{{contacto.telefono}}" class="form-control" id="telefono">
+                <input type="tel" value="{{contacto.telefono}}" class="form-control" name="telefono">
             </div>
             <div class="form-group">
                 <label for="correo">Correo electronico</label>
-                <input type="email" value="{{contacto.correo}}" class="form-control" id="correo">
+                <input type="email" value="{{contacto.correo}}" class="form-control" name="correo">
             </div>
             <input type="submit" class="form-control" id="submit">
 
@@ -25,22 +26,22 @@
     </div>
     {% else %}
     <div class="content p-3">
-        <form class="" action="/contacto" method="post">
+        <form class="" action="#" method="post">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre">
+                <input type="text" class="form-control" name="nombre">
             </div>
             <div class="form-group">
                 <label for="empresa">Empresa</label>
-                <input type="text" class="form-control" id="empresa">
+                <input type="text" class="form-control" name="empresa">
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="tel" class="form-control" id="telefono">
+                <input type="tel" class="form-control" name="telefono">
             </div>
             <div class="form-group">
                 <label for="correo">Correo electronico</label>
-                <input type="email" class="form-control" id="correo">
+                <input type="email" class="form-control" name="correo">
             </div>
             <input type="submit" class="form-control" id="submit">
         </form>

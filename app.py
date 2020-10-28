@@ -26,22 +26,26 @@ def detalles_prueba():
     return render_template('detalles.html', contacto=contacto)
 
 @app.route('/detalles/<nombre>')
-def detalles_contacto():
+def detalles_contacto(nombre):
     contacto = obtener_un_contacto(nombre)
+
     return render_template('detalles.html', contacto=contacto)
 
-@app.route('/contacto', methods=["POST", "GET", "PUT"])
+@app.route('/contacto', methods=["POST", "GET"])
 def contacto_form():
     if request.method == "GET":
         return render_template('formContacto.html')
-    elif request.method == "POST":
-        insertar_un_contacto(request.form)
-        return redirect(url_for("obtener_contactos"))
     else:
-        editar_un_contacto(resquest.form["nombre"],request.form)
+        insertar_un_contacto(request.form.to_dict())
         return redirect(url_for("obtener_contactos"))
 
-@app.route('/contacto/<nombre>')
-def contacto_form_editar():
-    contacto = obtener_un_contacto(nombre)
-    return render_template('formContacto.html', contacto=contacto)
+
+
+@app.route('/contacto/<nombre>', methods=["POST", "GET"])
+def contacto_form_editar(nombre):
+    if request.method == "GET":
+        contacto = obtener_un_contacto(nombre)
+        return render_template('formContacto.html', contacto=contacto)
+    else:
+        editar_un_contacto(nombre,request.form.to_dict())
+        return redirect(url_for("detalles_contacto", nombre=nombre))
