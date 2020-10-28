@@ -4,6 +4,9 @@ import json
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return redirect(url_for("obtener_contactos"));
 
 @app.route('/contactos')
 def obtener_contactos():
