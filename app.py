@@ -24,3 +24,8 @@ def detalles_prueba():
         "telefono" : "01 800 123 TEST"
     }
     return render_template('detalles.html', contacto=contacto)
+
+@app.route('/detalles/<nombre>')
+def detalles_contacto():
+    contacto = obtener_un_contacto(nombre)
+    return render_template('detalles.html', contacto=contacto)
