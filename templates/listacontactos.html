@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block contenido %}
-<div class="container">
-  {% for contacto in contactos %}
-    <div class="row">
-      <a href="/detalles/{{contacto.nombre}}" class="col-12 btn btn-light">
-        {{ contacto.nombre }}
-      </a>
+    <div class="container">
+        {% for contacto in contactos %}
+            <div class="row">
+                <a href="/detalles/{{contacto.nombre}}" class="col-12 btn btn-light">
+                    {{ contacto.nombre }}
+                </a>
+            </div>
+        {% endfor %}
     </div>
-  {% endfor %}
-</div>
 {% endblock %}
