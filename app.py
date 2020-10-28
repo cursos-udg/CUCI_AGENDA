@@ -29,3 +29,19 @@ def detalles_prueba():
 def detalles_contacto():
     contacto = obtener_un_contacto(nombre)
     return render_template('detalles.html', contacto=contacto)
+
+@app.route('/contacto', methods=["POST", "GET", "PUT"])
+def contacto_form():
+    if request.method == "GET":
+        return render_template('formContacto.html')
+    elif request.method == "POST":
+        insertar_un_contacto(request.form)
+        return redirect(url_for("obtener_contactos"))
+    else:
+        editar_un_contacto(resquest.form["nombre"],request.form)
+        return redirect(url_for("obtener_contactos"))
+
+@app.route('/contacto/<nombre>')
+def contacto_form_editar():
+    contacto = obtener_un_contacto(nombre)
+    return render_template('formContacto.html', contacto=contacto)

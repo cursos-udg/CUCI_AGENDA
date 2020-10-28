@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block contenido %}
+    {% if contacto is None %}
+    <div class="content p-3">
+        <form class="" action="/contacto" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input type="text" class="form-control" id="empresa">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="tel" class="form-control" id="telefono">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo electronico</label>
+                <input type="email" class="form-control" id="correo">
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="content p-3">
+        <form class="" action="/contacto" method="put">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" value="{{contacto.nombre}}" disabled class="form-control" id="nombre">
+            </div>
+            <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input type="text" value="{{contacto.empresa}}" class="form-control" id="empresa">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="tel" value="{{contacto.telefono}}" class="form-control" id="telefono">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo electronico</label>
+                <input type="email" value="{{contacto.correo}}" class="form-control" id="correo">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
