@@ -1,0 +1,10 @@
+applications:
+- path: .
+  memory: 64M
+  instances: 1
+  name: 
+  routes:
+    - route: .mybluemix.net
+  disk_quota: 1024M
+  buildpacks:
+    - python_buildpack
