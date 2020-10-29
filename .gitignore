@@ -4,3 +4,6 @@ scripts/
 pyvenv.cfg
 include/
 
+bin/
+lib64
+manifest.yml
