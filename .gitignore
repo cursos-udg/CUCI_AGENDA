@@ -1,1 +1,6 @@
 manifest.yml
+lib/
+scripts/
+pyvenv.cfg
+include/
+manifest.yml
